@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Angel's 12-Month Plan">
+    <meta name="theme-color" content="#FFF8DC">
+    <title>Angel's 12-Month Transformation Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Aptos, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FFFEF5 0%, #F0FFF0 100%);
+            color: #333;
+            line-height: 1.4;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* App Header */
+        .app-header {
+            background: linear-gradient(135deg, #FFEB99 0%, #B2E584 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #7CB342;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .app-header h1 {
+            font-size: 24px;
+            color: #558B2F;
+            margin-bottom: 5px;
+        }
+
+        .app-header p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-left: 4px solid #7CB342;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #558B2F;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section h3 {
+            color: #9CCC65;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 6px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        strong {
+            color: #558B2F;
+        }
+
+        em {
+            color: #9CCC65;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        th {
+            background: #FFFACD;
+            color: #558B2F;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #7CB342;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #E8F5E9;
+        }
+
+        tr:nth-child(even) {
+            background: #FFFEF5;
+        }
+
+        /* Boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFFACD 0%, #E8F5E9 100%);
+            border-left: 4px solid #9CCC65;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .callout {
+            background: #E3F2FD;
+            border-left: 4px solid #64B5F6;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .success {
+            background: #E8F5E9;
+            border-left: 4px solid #7CB342;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        /* Expandable Sections */
+        .collapsible {
+            background: linear-gradient(135deg, #FFFEF5 0%, #F0FFF0 100%);
+            border: 1px solid #E8F5E9;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #558B2F;
+            user-select: none;
+        }
+
+        .collapsible:active {
+            background: linear-gradient(135deg, #FFFACD 0%, #E8F5E9 100%);
+        }
+
+        .content {
+            display: none;
+            padding: 12px;
+            background: #FFFEF5;
+            border: 1px solid #E8F5E9;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 8px;
+        }
+
+        .content.show {
+            display: block;
+        }
+
+        /* Bottom Navigation */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 2px solid #7CB342;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-button {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #999;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: Aptos, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .nav-button.active {
+            color: #558B2F;
+            background: linear-gradient(135deg, #FFEB99 0%, #E8F5E9 100%);
+            border-top: 3px solid #558B2F;
+        }
+
+        /* Grid for metrics */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #FFFACD 0%, #E8F5E9 100%);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #7CB342;
+        }
+
+        .metric-card .value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #558B2F;
+        }
+
+        .metric-card .label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 8px;
+            margin-bottom: 6px;
+            background: #FFFEF5;
+            border-left: 3px solid #7CB342;
+            padding-left: 12px;
+        }
+
+        .checklist li:before {
+            content: "☐ ";
+            color: #7CB342;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .page {
+                padding: 16px;
+            }
+
+            .section {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- App Header -->
+    <div class="app-header">
+        <h1>💪 Angel's 12-Month Plan</h1>
+        <p>56kg → 51kg | Home & Gym Training | Tesco Shopping</p>
+    </div>
+
+    <!-- Page 1: Quick Reference Guide -->
+    <div id="page1" class="page active">
+        <div class="section">
+            <h2>📊 Daily Targets</h2>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="value">1,380</div>
+                    <div class="label">Calories/day</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">110g</div>
+                    <div class="label">Protein</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">160g</div>
+                    <div class="label">Carbs</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">50g</div>
+                    <div class="label">Fats</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📅 Weekly Training Structure</h2>
+            <h3>Week A (Odd weeks)</h3>
+            <ul>
+                <li>🏃 <strong>Mon:</strong> 2km Run (home) 25 mins</li>
+                <li>💪 <strong>Wed:</strong> Strength (home) 40 mins</li>
+                <li>🏋️ <strong>Fri:</strong> Gym PUSH 60 mins</li>
+                <li>🏋️ <strong>Sat:</strong> Gym LOWER + Stair Master 60 mins</li>
+                <li>😴 <strong>Sun:</strong> Rest & Meal Prep</li>
+            </ul>
+            <h3>Week B (Even weeks)</h3>
+            <ul>
+                <li>💪 <strong>Mon:</strong> Strength (home) 40 mins</li>
+                <li>🏃 <strong>Wed:</strong> 2km Run (home) 25 mins</li>
+                <li>🏋️ <strong>Fri:</strong> Gym PUSH 60 mins</li>
+                <li>🏋️ <strong>Sat:</strong> Gym LOWER + Stair Master 60 mins</li>
+                <li>😴 <strong>Sun:</strong> Rest & Meal Prep</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🥗 Sample Daily Meals</h2>
+            <h3>Breakfast (380 cal)</h3>
+            <ul>
+                <li>40g Quaker oats + 25g Myprotein powder + 250ml Plenish soya milk + 1 banana + 5ml honey</li>
+                <li><em>OR</em> 150g Fage yogurt + 40g granola + 100g blueberries</li>
+            </ul>
+            <h3>Lunch (420 cal)</h3>
+            <ul>
+                <li>150g Tesco chicken breast + 100g brown rice + 100g broccoli + 5ml sesame oil</li>
+                <li><em>OR</em> 180g Cauldron tofu stir-fry + 150g jasmine rice</li>
+            </ul>
+            <h3>Dinner (390 cal)</h3>
+            <ul>
+                <li>160g Tesco salmon + 150g sweet potato + 80g mixed vegetables</li>
+                <li><em>OR</em> 130g lean pork + 150g jasmine rice + 150g bok choy</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>💰 Weekly Budget</h2>
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Budget</th>
+                    <th>Items</th>
+                </tr>
+                <tr>
+                    <td><strong>Proteins</strong></td>
+                    <td>~£23-24</td>
+                    <td>Chicken, salmon, eggs, yogurt</td>
+                </tr>
+                <tr>
+                    <td><strong>Grains</strong></td>
+                    <td>~£8-10</td>
+                    <td>Rice, oats, bread, pasta</td>
+                </tr>
+                <tr>
+                    <td><strong>Veg/Fruit</strong></td>
+                    <td>~£11-13</td>
+                    <td>Broccoli, carrots, bananas, apples</td>
+                </tr>
+                <tr>
+                    <td><strong>Pantry</strong></td>
+                    <td>~£2-4</td>
+                    <td>Oils, soy sauce, peanut butter</td>
+                </tr>
+                <tr>
+                    <td><strong>WEEKLY TOTAL</strong></td>
+                    <td><strong>~£45-55</strong></td>
+                    <td>All from Tesco</td>
+                </tr>
+            </table>
+            <div class="highlight-box">
+                ✅ Monthly: ~£180-220 | ✅ Annual: ~£2,160-2,640
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Your Preferred Products</h2>
+            <h3>Milk & Protein</h3>
+            <ul>
+                <li>🥛 <strong>Plenish Unsweetened Soya Milk:</strong> No added sugar, 3.3g protein per 250ml</li>
+                <li>💪 <strong>Myprotein Impact Whey Isolate (Natural Vanilla):</strong> 21g protein per 25g serving</li>
+            </ul>
+            <h3>Daily Supplements</h3>
+            <ul>
+                <li>💊 <strong>C-1000 (Now Foods):</strong> Vitamin C daily</li>
+                <li>💊 <strong>Iron Complex Essential Mineral (Now Foods):</strong> Iron daily</li>
+                <li>💊 <strong>Visionace Plus (Vitabiotics):</strong> Eye health + lutein, zeaxanthin</li>
+            </ul>
+            <h3>Mixed Into Protein Shake</h3>
+            <ul>
+                <li>💪 <strong>CollagenUP (California Gold Nutrition):</strong> Hydrolyzed Marine Collagen + Hyaluronic Acid + Vitamin C</li>
+                <li>📝 Mix into: Myprotein shake with Plenish soya milk (1-2x daily)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📈 12-Month Timeline</h2>
+            <table>
+                <tr>
+                    <th>Months</th>
+                    <th>Weight</th>
+                    <th>Phase</th>
+                </tr>
+                <tr>
+                    <td>1-4</td>
+                    <td>56.0 → 54.0kg</td>
+                    <td>Foundation</td>
+                </tr>
+                <tr>
+                    <td>5-8</td>
+                    <td>54.0 → 52.0kg</td>
+                    <td>Strength</td>
+                </tr>
+                <tr>
+                    <td>9-12</td>
+                    <td>52.0 → <strong>51.0kg</strong></td>
+                    <td>Fat-Loss</td>
+                </tr>
+            </table>
+            <div class="success">
+                ✅ Goal achieved by Month 12 | ✅ 2km run 15-16 mins | ✅ Bench press 35kg+ | ✅ Body fat 24-25%
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Training Plan -->
+    <div id="page2" class="page">
+        <div class="section">
+            <h2>🏃 HOME 2KM RUN (20-25 mins)</h2>
+            <h3>Structure</h3>
+            <ul>
+                <li>⏲️ <strong>Warm-up:</strong> 3 mins light jog + dynamic stretches</li>
+                <li>🎯 <strong>Main run:</strong> 17-20 mins conversational pace</li>
+                <li>⬇️ <strong>Cool-down:</strong> 2-3 mins easy walk</li>
+                <li>🧘 <strong>Stretch:</strong> 3-5 mins (quad, hamstring, calf, IT band)</li>
+            </ul>
+            <h3>Progression</h3>
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Target Time</th>
+                    <th>Pace</th>
+                </tr>
+                <tr>
+                    <td>Month 1-2</td>
+                    <td>22-24 mins</td>
+                    <td>Very easy</td>
+                </tr>
+                <tr>
+                    <td>Month 3-4</td>
+                    <td>20-22 mins</td>
+                    <td>Steady</td>
+                </tr>
+                <tr>
+                    <td>Month 5-6</td>
+                    <td>17-19 mins</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td>Month 7-8</td>
+                    <td>16-18 mins</td>
+                    <td>Hard</td>
+                </tr>
+                <tr>
+                    <td>Month 9-12</td>
+                    <td>15-16 mins</td>
+                    <td>Fast</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>💪 HOME FULL-BODY STRENGTH (40 mins)</h2>
+            <h3>Equipment</h3>
+            <ul>
+                <li>🏋️ Dumbbells: 6kg, 8kg, 10kg, 12kg</li>
+                <li>🧘 Yoga mat (optional)</li>
+                <li>🏠 Sturdy chair (for tricep dips)</li>
+                <li>💧 Water bottle</li>
+            </ul>
+            <h3>Workout</h3>
+            <table>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Rest</th>
+                </tr>
+                <tr>
+                    <td>Dumbbell Squats</td>
+                    <td>3</td>
+                    <td>12-15</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Push-ups</td>
+                    <td>3</td>
+                    <td>8-15</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Single-leg Deadlifts</td>
+                    <td>3</td>
+                    <td>8/leg</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Rows</td>
+                    <td>3</td>
+                    <td>12/side</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Lateral Lunges</td>
+                    <td>3</td>
+                    <td>10/side</td>
+                    <td>45s</td>
+                </tr>
+                <tr>
+                    <td>Tricep Dips</td>
+                    <td>3</td>
+                    <td>8-12</td>
+                    <td>60s</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🏋️ GYM: UPPER BODY PUSH (60 mins)</h2>
+            <h3>Location: Surrey Quays Dock Gym, Southwark</h3>
+            <table>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Rest</th>
+                </tr>
+                <tr>
+                    <td><strong>Barbell Bench Press</strong></td>
+                    <td>4</td>
+                    <td>8-10</td>
+                    <td>90s</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Incline Press</td>
+                    <td>3</td>
+                    <td>10-12</td>
+                    <td>75s</td>
+                </tr>
+                <tr>
+                    <td>Machine Chest Fly</td>
+                    <td>3</td>
+                    <td>12-15</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Overhead Dumbbell Press</td>
+                    <td>3</td>
+                    <td>10-12</td>
+                    <td>75s</td>
+                </tr>
+                <tr>
+                    <td>Lateral Raises</td>
+                    <td>3</td>
+                    <td>12-15</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Tricep Rope Pushdowns</td>
+                    <td>3</td>
+                    <td>10-12</td>
+                    <td>60s</td>
+                </tr>
+            </table>
+            <h3>Bench Press Progression</h3>
+            <ul>
+                <li>🔰 Month 1: 20kg (empty bar) × 8-10</li>
+                <li>📈 Month 2: 22.5kg</li>
+                <li>📈 Month 4: 27.5kg</li>
+                <li>💪 Month 6: 30kg</li>
+                <li>🔥 Month 12: 35kg+</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🏋️ GYM: LOWER BODY + STAIR MASTER (60 mins)</h2>
+            <table>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Rest</th>
+                </tr>
+                <tr>
+                    <td><strong>Barbell Back Squats</strong></td>
+                    <td>4</td>
+                    <td>8-10</td>
+                    <td>90s</td>
+                </tr>
+                <tr>
+                    <td>Leg Press (machine)</td>
+                    <td>3</td>
+                    <td>10-12</td>
+                    <td>75s</td>
+                </tr>
+                <tr>
+                    <td>Romanian Deadlifts</td>
+                    <td>3</td>
+                    <td>10-12</td>
+                    <td>75s</td>
+                </tr>
+                <tr>
+                    <td>Leg Curls (machine)</td>
+                    <td>3</td>
+                    <td>12-15</td>
+                    <td>60s</td>
+                </tr>
+                <tr>
+                    <td>Calf Raises</td>
+                    <td>3</td>
+                    <td>15-20</td>
+                    <td>60s</td>
+                </tr>
+            </table>
+            <h3>🏃 Stair Master (12-15 mins)</h3>
+            <ul>
+                <li>📍 <strong>Months 1-4:</strong> Level 3-4, 12-15 mins steady</li>
+                <li>📍 <strong>Months 5-8:</strong> Level 4-5, 15-20 mins steady</li>
+                <li>📍 <strong>Months 9-12:</strong> Level 5-8, 10-12 mins + hard sprints</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Flexible Gym Days</h2>
+            <div class="highlight-box">
+                <strong>Choose ANY 2 of: Friday, Saturday, Sunday</strong><br><br>
+                ✅ <em>Fri + Sat:</em> Back-to-back (Sunday free)<br>
+                ✅ <em>Fri + Sun:</em> Spread out (Saturday free)<br>
+                ✅ <em>Sat + Sun:</em> Weekend focus (Friday free)
+            </div>
+            <h3>Decision Framework</h3>
+            <ul>
+                <li>🎯 <strong>High energy?</strong> Back-to-back Fri + Sat</li>
+                <li>🎯 <strong>Tired?</strong> Spread out Fri + Sun</li>
+                <li>🎯 <strong>Social plans?</strong> Skip that day</li>
+                <li>🎯 <strong>Very sore?</strong> Rotate days for more recovery</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📋 Weekly Checklist</h2>
+            <ul class="checklist">
+                <li>Decide which 2 gym days (Fri/Sat/Sun)</li>
+                <li>Meal prep Sunday (2-3 hours)</li>
+                <li>Weigh yourself Friday morning</li>
+                <li>Track running times</li>
+                <li>Track gym weights</li>
+                <li>Sleep 7-9 hours nightly</li>
+                <li>Drink 2.5-3L water daily</li>
+                <li>Complete 4 training sessions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 3: Nutrition Plan -->
+    <div id="page3" class="page">
+        <div class="section">
+            <h2>🥗 Your Products</h2>
+            <h3>🥛 Plenish Soya Milk (Unsweetened)</h3>
+            <ul>
+                <li>📊 60 cal, 3.3g protein per 250ml</li>
+                <li>✅ No added sugar</li>
+                <li>🔄 Use: Smoothies, coffee, cereals, cooking</li>
+            </ul>
+            <h3>💪 Myprotein Impact Whey Isolate (Natural Vanilla)</h3>
+            <ul>
+                <li>📊 100 cal, 21g protein per 25g serving</li>
+                <li>✅ High-quality isolate</li>
+                <li>🔄 Use: 1-2 servings daily (smoothies, shakes, cooking)</li>
+            </ul>
+            <h3>💊 Your Daily Supplements</h3>
+            <ul>
+                <li><strong>C-1000 (Now Foods):</strong> Vitamin C — daily immune support</li>
+                <li><strong>Iron Complex Essential Mineral (Now Foods):</strong> Iron — daily for energy</li>
+                <li><strong>Visionace Plus (Vitabiotics):</strong> Eye health — lutein, zeaxanthin, + other vision support</li>
+                <li><strong>CollagenUP (California Gold Nutrition):</strong> Hydrolyzed Marine Collagen + Hyaluronic Acid + Vitamin C</li>
+            </ul>
+            <h3>💪 How to Mix Collagen</h3>
+            <ul>
+                <li>Mix <strong>CollagenUP</strong> into Myprotein shake</li>
+                <li>Add 25-30g Myprotein Impact Whey (Natural Vanilla)</li>
+                <li>Add 250ml Plenish Unsweetened Soya Milk</li>
+                <li>Blend or shake well (collagen dissolves easily)</li>
+                <li>1-2x daily for hair, skin, joint health + muscle support</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🍳 Breakfast Options (380 cal)</h2>
+            <button class="collapsible">Option A: Oatmeal with Protein 🌾 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>40g Quaker oats</li>
+                    <li>25g Myprotein Impact Whey (Natural Vanilla)</li>
+                    <li>250ml Plenish soya milk</li>
+                    <li>1 banana</li>
+                    <li>5ml honey</li>
+                </ul>
+                <p><strong>Macros:</strong> 18g protein, 54g carbs, 7g fat</p>
+            </div>
+
+            <button class="collapsible">Option B: Greek Yogurt Parfait 🍓 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>150g Fage Greek Yogurt</li>
+                    <li>40g Tesco Granola</li>
+                    <li>100g frozen blueberries</li>
+                    <li>10g ground almonds</li>
+                </ul>
+                <p><strong>Macros:</strong> 16g protein, 48g carbs, 8g fat</p>
+            </div>
+
+            <button class="collapsible">Option C: Egg Toast (Hong Kong Style) 🥚 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>2 large eggs (Tesco free range)</li>
+                    <li>2 slices wholemeal bread</li>
+                    <li>5ml olive oil spray</li>
+                    <li>Tomato + spring onion + soy sauce</li>
+                </ul>
+                <p><strong>Macros:</strong> 14g protein, 42g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option D: Protein Pancakes 🥞 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>40g Myprotein Impact Whey</li>
+                    <li>50g Quaker oats (blended)</li>
+                    <li>1 large egg</li>
+                    <li>100ml Plenish soya milk</li>
+                    <li>5ml honey + vanilla</li>
+                </ul>
+                <p><strong>Macros:</strong> 20g protein, 48g carbs, 6g fat</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🥤 Mid-Morning Snack (100-150 cal)</h2>
+            <table>
+                <tr>
+                    <th>Option</th>
+                    <th>Protein</th>
+                </tr>
+                <tr>
+                    <td>Apple + 15g almonds</td>
+                    <td>4g</td>
+                </tr>
+                <tr>
+                    <td>150g Fage yogurt + honey</td>
+                    <td>12g</td>
+                </tr>
+                <tr>
+                    <td>Banana + peanut butter</td>
+                    <td>5g</td>
+                </tr>
+                <tr>
+                    <td>25g Myprotein shake</td>
+                    <td>21g</td>
+                </tr>
+                <tr>
+                    <td>2 rice cakes + peanut butter</td>
+                    <td>6g</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🍽️ Lunch Options (420 cal)</h2>
+            <button class="collapsible">Option A: Chicken + Brown Rice + Broccoli 🍗 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>150g Tesco chicken breast (grilled)</li>
+                    <li>100g brown rice (Tesco Finest, cooked)</li>
+                    <li>100g broccoli (steamed)</li>
+                    <li>5ml sesame oil + soy sauce</li>
+                </ul>
+                <p><strong>Macros:</strong> 35g protein, 48g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option B: Salmon + Sweet Potato 🐟 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>120g Tesco salmon fillet (baked)</li>
+                    <li>150g sweet potato (roasted)</li>
+                    <li>80g mixed vegetables</li>
+                    <li>Lemon juice</li>
+                </ul>
+                <p><strong>Macros:</strong> 28g protein, 45g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option C: Tofu Stir-fry + Jasmine Rice 🥢 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>180g Cauldron tofu (pressed, cubed)</li>
+                    <li>150g jasmine rice (Tesco, cooked)</li>
+                    <li>Mixed veg: bok choy, peppers, carrots</li>
+                    <li>10ml sesame oil + garlic + ginger + soy sauce</li>
+                </ul>
+                <p><strong>Macros:</strong> 22g protein, 50g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option D: Ground Beef + Pasta 🍝 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>120g Tesco lean ground beef</li>
+                    <li>80g wholemeal pasta (Tesco, cooked)</li>
+                    <li>Canned tomatoes + garlic + herbs</li>
+                    <li>100g mixed vegetables</li>
+                </ul>
+                <p><strong>Macros:</strong> 30g protein, 48g carbs, 9g fat</p>
+            </div>
+
+            <button class="collapsible">Option E: Turkey + Salad + Chickpea 🥗 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>150g Tesco turkey deli meat</li>
+                    <li>200g Tesco salad mix</li>
+                    <li>100g canned chickpeas</li>
+                    <li>Cherry tomatoes + balsamic dressing</li>
+                </ul>
+                <p><strong>Macros:</strong> 32g protein, 45g carbs, 6g fat</p>
+            </div>
+
+            <button class="collapsible">Option F: Canned Tuna + Rice 🐟 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>160g John West canned tuna (spring water)</li>
+                    <li>100g brown rice (Tesco, cooked)</li>
+                    <li>120g broccoli (steamed)</li>
+                    <li>5ml olive oil spray + lemon</li>
+                </ul>
+                <p><strong>Macros:</strong> 32g protein, 46g carbs, 3g fat</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🍽️ Dinner Options (390 cal)</h2>
+            <button class="collapsible">Option A: Cod + Jasmine Rice + Bok Choy 🐟 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>160g Tesco cod fillet (grilled)</li>
+                    <li>150g jasmine rice (cooked)</li>
+                    <li>150g bok choy (steamed)</li>
+                    <li>5ml sesame oil + soy sauce + ginger</li>
+                </ul>
+                <p><strong>Macros:</strong> 36g protein, 45g carbs, 8g fat</p>
+            </div>
+
+            <button class="collapsible">Option B: Chicken + Vegetables + Potatoes 🍗 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>160g Tesco chicken breast (roasted)</li>
+                    <li>150g new potatoes (boiled)</li>
+                    <li>150g mixed vegetables (broccoli + carrots)</li>
+                    <li>5ml olive oil spray</li>
+                </ul>
+                <p><strong>Macros:</strong> 38g protein, 42g carbs, 6g fat</p>
+            </div>
+
+            <button class="collapsible">Option C: Salmon + Sweet Potato Mash + Salad 🐟 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>130g Tesco salmon fillet (baked)</li>
+                    <li>200g sweet potato (mashed lightly)</li>
+                    <li>100g Tesco salad mix</li>
+                    <li>Lemon + balsamic dressing</li>
+                </ul>
+                <p><strong>Macros:</strong> 30g protein, 48g carbs, 12g fat</p>
+            </div>
+
+            <button class="collapsible">Option D: Lean Beef + Brown Rice + Vegetables 🥩 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>130g Tesco lean ground beef (cooked)</li>
+                    <li>150g brown rice (Tesco, cooked)</li>
+                    <li>120g mixed vegetables (stir-fry style)</li>
+                    <li>5ml sesame oil</li>
+                </ul>
+                <p><strong>Macros:</strong> 34g protein, 46g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option E: Turkey Stir-fry + Noodles 🍜 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>140g Tesco turkey breast (diced or deli)</li>
+                    <li>100g egg noodles (Tesco, cooked)</li>
+                    <li>150g mixed vegetables</li>
+                    <li>10ml sesame oil + soy sauce + garlic</li>
+                </ul>
+                <p><strong>Macros:</strong> 36g protein, 48g carbs, 10g fat</p>
+            </div>
+
+            <button class="collapsible">Option F: Tofu Curry + Jasmine Rice 🍛 <span>▼</span></button>
+            <div class="content">
+                <ul>
+                    <li>200g Cauldron tofu (pressed, cubed)</li>
+                    <li>150g jasmine rice (cooked)</li>
+                    <li>Mixed vegetables (broccoli, carrots, peppers)</li>
+                    <li>Curry sauce: curry paste + coconut milk + tomato</li>
+                </ul>
+                <p><strong>Macros:</strong> 18g protein, 52g carbs, 12g fat</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Sunday Meal Prep (2-3 hours)</h2>
+            <h3>Step 1: Cook Proteins (30 mins)</h3>
+            <ul>
+                <li>🔥 Oven 200°C: Cook 400g chicken breast (20 mins)</li>
+                <li>🔥 Oven: Cook 250g salmon (12 mins)</li>
+                <li>🍳 Pan: Brown 300g ground beef (5 mins)</li>
+            </ul>
+            <h3>Step 2: Cook Grains (40 mins)</h3>
+            <ul>
+                <li>🍚 Boil 400g brown rice (35-40 mins)</li>
+                <li>🍚 Boil 300g jasmine rice (15 mins)</li>
+            </ul>
+            <h3>Step 3: Prep Vegetables (20 mins)</h3>
+            <ul>
+                <li>🥦 Steam 500g broccoli (5 mins)</li>
+                <li>🥬 Wash/chop bok choy</li>
+                <li>🥕 Chop mixed vegetables</li>
+            </ul>
+            <h3>Step 4: Portion & Store (30 mins)</h3>
+            <ul>
+                <li>📦 Create 5-6 meal boxes (protein + grain + veg)</li>
+                <li>❄️ Fridge: 3-4 days | Freezer: 2-3 months</li>
+                <li>🏷️ Label with dates</li>
+            </ul>
+            <div class="success">
+                ✅ Result: Fed for entire week! ✅ Each meal reheats in 3 mins ✅ Zero daily cooking stress!
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Tesco Shopping -->
+    <div id="page4" class="page">
+        <div class="section">
+            <h2>🛒 Weekly Tesco Shopping</h2>
+            <div class="highlight-box">
+                <strong>Shop at: Tesco Extra for best selection</strong><br>
+                <em>Or use Tesco.com online (often free delivery available)</em>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🍗 Proteins</h2>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td><strong>Tesco Chicken Breast</strong></td>
+                    <td>800g pack</td>
+                    <td>Best value protein</td>
+                </tr>
+                <tr>
+                    <td><strong>Salmon Fillets</strong></td>
+                    <td>250g</td>
+                    <td>Friday stock freshest</td>
+                </tr>
+                <tr>
+                    <td><strong>Eggs (Free Range)</strong></td>
+                    <td>18 large</td>
+                    <td>Tesco or Clubcard price</td>
+                </tr>
+                <tr>
+                    <td><strong>Fage Greek Yogurt</strong></td>
+                    <td>500g tub</td>
+                    <td>High protein</td>
+                </tr>
+                <tr>
+                    <td><strong>Lean Ground Beef</strong></td>
+                    <td>400g</td>
+                    <td>Check reduced sticker</td>
+                </tr>
+                <tr>
+                    <td><strong>Cauldron Tofu</strong></td>
+                    <td>280g</td>
+                    <td>Ambient aisle</td>
+                </tr>
+                <tr>
+                    <td><strong>Canned Tuna</strong></td>
+                    <td>3-pack 160g</td>
+                    <td>Backup protein</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🌾 Grains & Carbs</h2>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                </tr>
+                <tr>
+                    <td>Tesco Brown Rice</td>
+                    <td>500g dry</td>
+                </tr>
+                <tr>
+                    <td>Tesco Jasmine Rice</td>
+                    <td>500g dry</td>
+                </tr>
+                <tr>
+                    <td>Quaker Oats</td>
+                    <td>500g</td>
+                </tr>
+                <tr>
+                    <td>Wholemeal Bread</td>
+                    <td>800g loaf</td>
+                </tr>
+                <tr>
+                    <td>Wholemeal Pasta</td>
+                    <td>500g</td>
+                </tr>
+                <tr>
+                    <td>Sweet Potato</td>
+                    <td>1kg bag</td>
+                </tr>
+                <tr>
+                    <td>New Potatoes</td>
+                    <td>1.5kg</td>
+                </tr>
+                <tr>
+                    <td>Rice Cakes</td>
+                    <td>100g pack</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🥦 Vegetables & Fruit</h2>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                </tr>
+                <tr>
+                    <td>Broccoli (loose)</td>
+                    <td>500g</td>
+                </tr>
+                <tr>
+                    <td>Bok Choy</td>
+                    <td>300g</td>
+                </tr>
+                <tr>
+                    <td>Carrots (loose bag)</td>
+                    <td>1kg</td>
+                </tr>
+                <tr>
+                    <td>Bell Peppers</td>
+                    <td>3-pack</td>
+                </tr>
+                <tr>
+                    <td>Onions (loose)</td>
+                    <td>1kg</td>
+                </tr>
+                <tr>
+                    <td>Garlic bulb</td>
+                    <td>100g</td>
+                </tr>
+                <tr>
+                    <td>Ginger</td>
+                    <td>100g</td>
+                </tr>
+                <tr>
+                    <td>Tomatoes</td>
+                    <td>6-pack</td>
+                </tr>
+                <tr>
+                    <td>Mixed Salad</td>
+                    <td>200g bag</td>
+                </tr>
+                <tr>
+                    <td>Bananas (loose)</td>
+                    <td>6 fruit</td>
+                </tr>
+                <tr>
+                    <td>Apples (loose)</td>
+                    <td>6 fruit</td>
+                </tr>
+                <tr>
+                    <td>Frozen Blueberries</td>
+                    <td>300g</td>
+                </tr>
+                <tr>
+                    <td>Lemon/Lime</td>
+                    <td>3-pack</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🥛 Dairy & Pantry</h2>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Frequency</th>
+                </tr>
+                <tr>
+                    <td><strong>Plenish Soya Milk</strong></td>
+                    <td>1L</td>
+                    <td>Weekly</td>
+                </tr>
+                <tr>
+                    <td>Olive Oil Spray</td>
+                    <td>200ml</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Sesame Oil</td>
+                    <td>250ml</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Soy Sauce (low-sodium)</td>
+                    <td>150ml</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Peanut Butter</td>
+                    <td>340g</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Granola</td>
+                    <td>400g</td>
+                    <td>Monthly</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>💊 Supplements (Buy Monthly)</h2>
+            <ul>
+                <li>💪 <strong>Myprotein Impact Whey Isolate (Natural Vanilla, 1kg)</strong> — from Myprotein.com</li>
+                <li>💪 <strong>CollagenUP (California Gold Nutrition)</strong> — online or supplement stores</li>
+                <li>💊 <strong>C-1000 (Now Foods):</strong> Vitamin C daily</li>
+                <li>💊 <strong>Iron Complex Essential Mineral (Now Foods):</strong> Iron daily</li>
+                <li>💊 <strong>Visionace Plus (Vitabiotics):</strong> Eye health daily</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Shopping Tip:</strong> Myprotein.com often has 20-40% off sales or flash deals. Check email for codes! CollagenUP can be found on Amazon, Vitabiotics, or health supplement stores.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏪 Tesco Shopping Tips</h2>
+            <ul>
+                <li>✅ <strong>Use Clubcard:</strong> Get 10-20% off many items (free to sign up)</li>
+                <li>✅ <strong>Check reduced section:</strong> Meat/fish marked down 30-50% (use same day)</li>
+                <li>✅ <strong>Buy loose produce:</strong> Carrots/onions/garlic 50% cheaper loose</li>
+                <li>✅ <strong>Tesco own-brand:</strong> Quality good, price 20-30% less than name brands</li>
+                <li>✅ <strong>Shop Tesco Extra:</strong> Larger selection + lower prices than standard stores</li>
+                <li>✅ <strong>Stock up pantry:</strong> Oils/soy sauce last weeks, buy once monthly</li>
+                <li>✅ <strong>Order online:</strong> Saves time, often free delivery promos available</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 5: Weekly Tracker -->
+    <div id="page5" class="page">
+        <div class="section">
+            <h2>📊 Weekly Progress Tracker</h2>
+            <div class="highlight-box">
+                <strong>🎯 Check every Friday morning (after bathroom, before eating)</strong><br>
+                <em>Track in spreadsheet, app, or phone notes - consistency matters!</em>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚖️ Weight & Body Metrics</h2>
+            <table>
+                <tr>
+                    <th>Week</th>
+                    <th>Weight (kg)</th>
+                    <th>Body Fat %</th>
+                    <th>Waist (cm)</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>Week 1</td>
+                    <td>56.0</td>
+                    <td>30.0%</td>
+                    <td>—</td>
+                    <td>Baseline</td>
+                </tr>
+                <tr>
+                    <td>Week 4</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>First check-in</td>
+                </tr>
+                <tr>
+                    <td>Week 13</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>Month 3</td>
+                </tr>
+                <tr>
+                    <td>Week 26</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>Mid-year</td>
+                </tr>
+                <tr>
+                    <td>Week 48</td>
+                    <td>51.0</td>
+                    <td>~25%</td>
+                    <td>—</td>
+                    <td><strong>GOAL! ✓</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>💪 Performance Metrics</h2>
+            <table>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Month 1</th>
+                    <th>Month 6</th>
+                    <th>Month 12</th>
+                </tr>
+                <tr>
+                    <td><strong>2km Run Time</strong></td>
+                    <td>22-24 min</td>
+                    <td>18-19 min</td>
+                    <td>15-16 min ✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Bench Press</strong></td>
+                    <td>20kg</td>
+                    <td>27.5kg</td>
+                    <td>35kg+ ✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Goblet Squats</strong></td>
+                    <td>6kg</td>
+                    <td>10kg</td>
+                    <td>12kg ✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Dumbbell Rows</strong></td>
+                    <td>6kg</td>
+                    <td>10kg</td>
+                    <td>12kg ✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Stair Master</strong></td>
+                    <td>Level 3, 12 min</td>
+                    <td>Level 5, 15 min</td>
+                    <td>Level 7+, 10 min ✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Resting Heart Rate</strong></td>
+                    <td>65 bpm</td>
+                    <td>-3 bpm</td>
+                    <td>-5 bpm ✓</td>
+                </tr>
+            </table>
+            <div class="success">
+                <strong>Scale matters less than these metrics!</strong> You'll feel stronger + look different before the scale moves much. Trust the process! 💪
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📝 Weekly Checklist</h2>
+            <ul class="checklist">
+                <li>Weigh yourself Friday morning</li>
+                <li>Record: 2km run time</li>
+                <li>Record: Heaviest weight for each lift</li>
+                <li>Check: Energy level (1-10 scale)</li>
+                <li>Check: Sleep quality (1-10 scale)</li>
+                <li>Grocery shop Sunday</li>
+                <li>Meal prep Sunday (2-3 hours)</li>
+                <li>Complete 4 training sessions</li>
+                <li>Hit calorie targets (±100 cal OK)</li>
+                <li>Drink 2.5-3L water daily</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📅 Monthly Tasks</h2>
+            <ul class="checklist">
+                <li>Take body measurements (waist, hip, chest, thigh)</li>
+                <li>Take progress photo (same clothing, lighting)</li>
+                <li>Review last month's metrics</li>
+                <li>Adjust weights/intensity based on progress</li>
+                <li>Assess energy levels & motivation</li>
+                <li>Check: How are clothes fitting?</li>
+                <li>Refill supplements if needed</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Monthly Weight Loss Targets</h2>
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Target Weight</th>
+                    <th>Monthly Loss</th>
+                    <th>Progress</th>
+                </tr>
+                <tr>
+                    <td>Month 1</td>
+                    <td>55.3kg</td>
+                    <td>-0.7kg</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Month 2</td>
+                    <td>54.8kg</td>
+                    <td>-0.5kg</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Month 3</td>
+                    <td>54.3kg</td>
+                    <td>-0.5kg</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Month 4</td>
+                    <td>54.0kg</td>
+                    <td>-0.3kg</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Months 5-8</td>
+                    <td>52.0kg</td>
+                    <td>-2kg total</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Month 8</td>
+                    <td>52.0kg</td>
+                    <td>—</td>
+                    <td>4kg lost!</td>
+                </tr>
+                <tr>
+                    <td>Months 9-12</td>
+                    <td>51.0kg</td>
+                    <td>-1kg total</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td><strong>Month 12</strong></td>
+                    <td><strong>51.0kg</strong></td>
+                    <td><strong>-5kg total</strong></td>
+                    <td><strong>GOAL! 🎉</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Plateau Troubleshooting</h2>
+            <div class="highlight-box">
+                <strong>If weight doesn't move for 3+ weeks:</strong>
+            </div>
+            <ul class="checklist">
+                <li>Check nutrition accuracy (use food scale, not eyeballing)</li>
+                <li>Increase training intensity (add 15 sec rest reduction)</li>
+                <li>Add 1 extra Stair Master session (15 mins on Wed/Thu)</li>
+                <li>Check sleep (7-9 hours? Stress level?)</li>
+                <li>Check hydration (2.5-3L daily?)</li>
+                <li>Only THEN reduce calories by 100 (not more!)</li>
+                <li>Check cycle (if female - normal to retain water)</li>
+            </ul>
+            <div class="callout">
+                💡 <strong>Most common cause:</strong> Food logging inaccuracy. Spend 1 week being ruthlessly honest with portions!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📸 Progress Photo Tracking</h2>
+            <ul>
+                <li>📅 <strong>Take every month:</strong> Same day (e.g., 1st of month)</li>
+                <li>👕 <strong>Same clothing:</strong> Sports bra + shorts (or leggings)</li>
+                <li>💡 <strong>Same lighting:</strong> Near window with natural light</li>
+                <li>📍 <strong>Same location:</strong> Same mirror/room each time</li>
+                <li>⏰ <strong>Same time:</strong> Morning (before eating) best</li>
+                <li>📱 <strong>Store in phone:</strong> Private folder, create comparison montage</li>
+            </ul>
+            <div class="success">
+                Most dramatic visual changes happen months 3-8. Your scale might not move much, but photos will show serious transformation! 💪
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Non-Scale Victories (Most Important!)</h2>
+            <ul>
+                <li>✅ Running becomes easier (same pace, less breathless)</li>
+                <li>✅ Weights feel lighter (you're getting stronger)</li>
+                <li>✅ Clothes fit differently (looser waist, tighter arms)</li>
+                <li>✅ Energy levels higher throughout day</li>
+                <li>✅ Sleep quality improves</li>
+                <li>✅ Confidence increases significantly</li>
+                <li>✅ Compliments from friends/family</li>
+                <li>✅ You feel capable + proud of yourself</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Remember:</strong> The scale is ONE metric. These victories are the REAL transformation! 🌟
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <button class="nav-button active" onclick="showPage(1)">📊 Quick Ref</button>
+        <button class="nav-button" onclick="showPage(2)">💪 Training</button>
+        <button class="nav-button" onclick="showPage(3)">🥗 Nutrition</button>
+        <button class="nav-button" onclick="showPage(4)">🛒 Shopping</button>
+        <button class="nav-button" onclick="showPage(5)">📈 Tracker</button>
+    </div>
+
+    <script>
+        function showPage(pageNum) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(`page${pageNum}`).classList.add('active');
+            
+            // Update nav buttons
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach((btn, idx) => {
+                if (idx === pageNum - 1) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Collapsible functionality
+        const collapsibles = document.querySelectorAll('.collapsible');
+        collapsibles.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+                
+                // Toggle arrow
+                const arrow = this.querySelector('span');
+                if (content.classList.contains('show')) {
+                    arrow.textContent = '▲';
+                } else {
+                    arrow.textContent = '▼';
+                }
+            });
+        });
+
+        // Add to home screen prompt (iOS)
+        if (window.navigator.standalone === undefined) {
+            // Not in standalone mode, add instructions if needed
+        }
+    </script>
+</body>
+</html>
